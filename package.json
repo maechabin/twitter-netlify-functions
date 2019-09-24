@@ -1,0 +1,27 @@
+{
+  "name": "twitter-netlify-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "functions/lib/index.js",
+  "scripts": {
+    "serve": "npm run tsc && netlify-lambda serve ./dist --port 9001",
+    "build": "npm run tsc && netlify-lambda build ./dist",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.32",
+    "@types/cors": "^2.8.6",
+    "@types/dotenv": "^6.1.1",
+    "@types/twitter": "^1.7.0",
+    "aws-lambda": "^0.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "twitter": "^1.7.1"
+  }
+}
