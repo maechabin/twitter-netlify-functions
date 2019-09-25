@@ -1,17 +1,20 @@
 import { Context, Callback, APIGatewayEvent } from 'aws-lambda';
 // import * as Cors from 'cors';
-import * as Twitter from 'twitter';
+import * as Twit from 'twit';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 // const cors = Cors();
 
-const twitter = new Twitter({
+const twitter = new Twit({
   consumer_key: `${process.env.CONSUMER_KEY}`,
   consumer_secret: `${process.env.CONSUMER_SECRET}`,
-  access_token_key: `${process.env.ACCESS_TOKEN_KEY}`,
+  access_token: `${process.env.ACCESS_TOKEN_KEY}`,
   access_token_secret: `${process.env.ACCESS_TOKEN_SECRET}`,
+  app_only_auth: true,
+  timeout_ms: 60 * 1000,
+  strictSSL: true,
 } as const);
 
 exports.handler = async (
@@ -27,7 +30,7 @@ exports.handler = async (
     count: 100,
   };
 
-  twitter.get('search/tweets', params, (error, tweets) => {
+  twitter.get('search/tweets', params, (error, tweets, response) => {
     if (!error) {
       callback(undefined, {
         statusCode: 200,

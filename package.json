@@ -18,10 +18,12 @@
     "@types/aws-lambda": "^8.10.32",
     "@types/cors": "^2.8.6",
     "@types/dotenv": "^6.1.1",
+    "@types/twit": "^2.2.22",
     "@types/twitter": "^1.7.0",
     "aws-lambda": "^0.1.2",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
+    "twit": "^2.2.11",
     "twitter": "^1.7.1"
   }
 }
