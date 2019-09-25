@@ -8,10 +8,10 @@ dotenv.config();
 // const cors = Cors();
 
 const twitter = new Twit({
-  consumer_key: `${process.env.CONSUMER_KEY}`,
-  consumer_secret: `${process.env.CONSUMER_SECRET}`,
-  access_token: `${process.env.ACCESS_TOKEN_KEY}`,
-  access_token_secret: `${process.env.ACCESS_TOKEN_SECRET}`,
+  consumer_key: process.env.CONSUMER_KEY || '',
+  consumer_secret: process.env.CONSUMER_SECRET || '',
+  access_token: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
   app_only_auth: true,
   timeout_ms: 60 * 1000,
   strictSSL: true,
