@@ -1,11 +1,8 @@
 import { Context, Callback, APIGatewayEvent } from 'aws-lambda';
-// import * as Cors from 'cors';
 import * as Twit from 'twit';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
-
-// const cors = Cors();
 
 const twitter = new Twit({
   consumer_key: process.env.CONSUMER_KEY || '',
@@ -36,6 +33,8 @@ exports.handler = async (
     callback(undefined, {
       statusCode: 200,
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ result: result.data }),
