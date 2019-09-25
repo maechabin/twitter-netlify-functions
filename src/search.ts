@@ -30,15 +30,20 @@ exports.handler = async (
     count: 100,
   };
 
-  twitter.get('search/tweets', params, (error, tweets, response) => {
-    if (!error) {
-      callback(undefined, {
-        statusCode: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ result: tweets }),
-      });
-    }
-  });
+  const result = await twitter.get('search/tweets', params);
+
+  if (result.data) {
+    callback(undefined, {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ result: result.data }),
+    });
+  } else {
+    callback(undefined, {
+      statusCode: 400,
+      body: 'Latest note was already syndicated.',
+    });
+  }
 };
